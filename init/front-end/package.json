@@ -1,6 +1,19 @@
 {
+  "private": true,
   "dependencies": {
-    "colors": "^1.4.0",
-    "http-server": "^14.0.0"
+    "colors": "^1.4.0"
+  },
+  "name": "username-meme-ory",
+  "version": "1.0.0",
+  "description": "A memory game based on memes ¯\\(ツ)\\/¯.",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -c-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }
