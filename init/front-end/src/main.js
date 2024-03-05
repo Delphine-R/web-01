@@ -2,7 +2,9 @@
 import { Router } from './app/scripts/router';
 
 // TODO #import-components: use ES named imports to import WelcomeComponent, GameComponent a ScoreComponent
-
+import {WelcomeComponent} from './app/scripts/welcome';
+import { parseUrl } from './app/scripts/utils';
+import { ScoreComponent } from './app/scripts/score';
 
 // TODO #import-css: use ES side-effect imports to import styles/style.css
 
