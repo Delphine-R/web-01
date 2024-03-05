@@ -7,7 +7,8 @@ import { parseUrl } from './app/scripts/utils';
 import { ScoreComponent } from './app/scripts/score';
 
 // TODO #import-css: use ES side-effect imports to import styles/style.css
-
+import "./app/styles/bootstrap.css";
+import "./app/styles/style.css";
 
 const outlet = document.querySelector("#content-outlet");
 const router = new Router(outlet);
