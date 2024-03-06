@@ -48,21 +48,21 @@ export class GameComponent extends Component{
         this._config = config;
         this._boardElement = document.querySelector(".cards");
 
-        // create cards out of the config
-        this._cards = [];
-        // TODO #functional-programming: use Array.map() instead.
-        for (var i in this._config.ids) {
-          this._cards[i] = new CardComponent(this._config.ids[i]);
-        }
+      // create cards out of the config
+      this._cards = [];
+      // TODO #functional-programming: use Array.map() instead.
+      for (var i in this._config.ids) {
+        this._cards[i] = new CardComponent(this._config.ids[i]);
+      }
 
-        // TODO #functional-programming: use Array.forEach() instead.
-        // TODO #let-const: replace var with let.
-        for (var i in this._cards) {
-          var card = this._cards[i];
+      // TODO #functional-programming: use Array.forEach() instead.
+      // TODO #let-const: replace var with let.
+      for (var i in this._cards) {
+        var card = this._cards[i];
 
-          // TODO #let-const: extract function _appendCard (ie: copy its body here and remove the function)
-          this._appendCard(card);
-        }
+        // TODO #let-const: extract function _appendCard (ie: copy its body here and remove the function)
+        this._appendCard(card);
+      }
 
         this.start();
       }.bind(this)
@@ -276,16 +276,16 @@ class CardComponent extends Component{
     // has the matching card has been discovered already?
     this.matched = false;
 
-    this._elt = document.createElement("div");
-    this._elt.innerHTML = this.template;
-    this._elt = this._elt.firstElementChild;
-    this._id = id;
+  this._elt = document.createElement("div");
+  this._elt.innerHTML = this.template;
+  this._elt = this._elt.firstElementChild;
+  this._id = id;
 
-    this._imageElt = this.getElement().querySelector(".card-wrapper");
-    this._imageElt.querySelector("img.front-face").src =
-      CARDS_IMAGE[this._id + 1];
-    this._imageElt.querySelector("img.back-face").src = CARDS_IMAGE[0];
-  }
+  this._imageElt = this.getElement().querySelector(".card-wrapper");
+  this._imageElt.querySelector("img.front-face").src =
+    CARDS_IMAGE[this._id + 1];
+  this._imageElt.querySelector("img.back-face").src = CARDS_IMAGE[0];
+}
 
   get flipped() {
     return this._flipped;
