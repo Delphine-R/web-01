@@ -20,8 +20,8 @@
 
 var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(531), __webpack_require__.b);
 var ___CSS_LOADER_URL_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(115), __webpack_require__.b);
-var ___CSS_LOADER_URL_IMPORT_2___ = new URL(/* asset import */ __webpack_require__(419), __webpack_require__.b);
-var ___CSS_LOADER_URL_IMPORT_3___ = new URL(/* asset import */ __webpack_require__(385), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_2___ = new URL(/* asset import */ __webpack_require__(800), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_3___ = new URL(/* asset import */ __webpack_require__(766), __webpack_require__.b);
 var ___CSS_LOADER_URL_IMPORT_4___ = new URL(/* asset import */ __webpack_require__(274), __webpack_require__.b);
 var ___CSS_LOADER_URL_IMPORT_5___ = new URL(/* asset import */ __webpack_require__(154), __webpack_require__.b);
 var ___CSS_LOADER_URL_IMPORT_6___ = new URL(/* asset import */ __webpack_require__(782), __webpack_require__.b);
@@ -12444,6 +12444,34 @@ module.exports = function (i) {
 
 /***/ }),
 
+/***/ 385:
+/***/ ((module) => {
+
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    // eslint-disable-next-line no-param-reassign
+    options = {};
+  }
+  if (!url) {
+    return url;
+  }
+
+  // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+  url = String(url.__esModule ? url.default : url);
+  if (options.hash) {
+    // eslint-disable-next-line no-param-reassign
+    url += options.hash;
+  }
+  if (options.maybeNeedQuotes && /[\t\n\f\r "'=<>`]/.test(url)) {
+    return "\"".concat(url, "\"");
+  }
+  return url;
+};
+
+/***/ }),
+
 /***/ 72:
 /***/ ((module) => {
 
@@ -12693,7 +12721,7 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ 385:
+/***/ 766:
 /***/ ((module) => {
 
 module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%272%27 fill=%27%23fff%27/%3e%3c/svg%3e";
@@ -12798,7 +12826,7 @@ module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%
 
 /***/ }),
 
-/***/ 419:
+/***/ 800:
 /***/ ((module) => {
 
 module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3e%3cpath fill=%27none%27 stroke=%27%23fff%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%273%27 d=%27m6 10 3 3 6-6%27/%3e%3c/svg%3e";
@@ -12823,6 +12851,13 @@ module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%
 /***/ ((module) => {
 
 module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 8 8%27%3e%3cpath fill=%27%23198754%27 d=%27M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 663:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "bec5ee7f5dfdda324e3a.jpg";
 
 /***/ })
 
@@ -12880,9 +12915,44 @@ module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
@@ -13146,6 +13216,28 @@ function parseUrl(url = window.location.href) {
   return result;
 }
 
+;// CONCATENATED MODULE: ./src/assets/cards/back.png
+const back_namespaceObject = __webpack_require__.p + "dd7c8522accf2aa321b1.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-0.png
+const card_0_namespaceObject = __webpack_require__.p + "b4fcb5946ea8976c82f8.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-1.png
+const card_1_namespaceObject = __webpack_require__.p + "a111f209fed5931f5793.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-2.png
+const card_2_namespaceObject = __webpack_require__.p + "d42e6d2f68784bbe2575.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-3.png
+const card_3_namespaceObject = __webpack_require__.p + "7bccb8f76bf5dc436f1c.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-4.png
+const card_4_namespaceObject = __webpack_require__.p + "842da728bff30039ac9e.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-5.png
+const card_5_namespaceObject = __webpack_require__.p + "57677913fb65f1073387.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-6.png
+const card_6_namespaceObject = __webpack_require__.p + "a273b859256de443b584.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-7.png
+const card_7_namespaceObject = __webpack_require__.p + "669c2065417a5776112a.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-8.png
+const card_8_namespaceObject = __webpack_require__.p + "bab609258b8f0fcc533c.png";
+;// CONCATENATED MODULE: ./src/assets/cards/card-9.png
+const card_9_namespaceObject = __webpack_require__.p + "9166644175ddbd4ba9ec.png";
 ;// CONCATENATED MODULE: ./src/app/scripts/game.js
 // TODO #import-html: use ES default imports to import game.html as template
 
@@ -13368,18 +13460,30 @@ GameComponent.prototype._flipCard = function _flipCard(card) {
 
 // TODO #card-component: Change images location to /app/components/game/card/assets/***.png
 // TODO #import-assets: use ES default import to import images.
+
+
+
+
+
+
+
+
+
+
+
+
 var CARDS_IMAGE = [
-  "/src/assets/cards/back.png",
-  "/src/assets/cards/card-0.png",
-  "/src/assets/cards/card-1.png",
-  "/src/assets/cards/card-2.png",
-  "/src/assets/cards/card-3.png",
-  "/src/assets/cards/card-4.png",
-  "/src/assets/cards/card-5.png",
-  "/src/assets/cards/card-6.png",
-  "/src/assets/cards/card-7.png",
-  "/src/assets/cards/card-8.png",
-  "/src/assets/cards/card-9.png",
+  back_namespaceObject,
+  card_0_namespaceObject,
+  card_1_namespaceObject,
+  card_2_namespaceObject,
+  card_3_namespaceObject,
+  card_4_namespaceObject,
+  card_5_namespaceObject,
+  card_6_namespaceObject,
+  card_7_namespaceObject,
+  card_8_namespaceObject,
+  card_9_namespaceObject,
 ];
 
 // TODO #class: use the ES6 class keyword
@@ -13434,6 +13538,18 @@ Object.defineProperties(CardComponent.prototype, {
 });
 
 
+// EXTERNAL MODULE: ./node_modules/html-loader/dist/runtime/getUrl.js
+var getUrl = __webpack_require__(385);
+var getUrl_default = /*#__PURE__*/__webpack_require__.n(getUrl);
+;// CONCATENATED MODULE: ./src/app/views/score.html
+// Imports
+
+var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(663), __webpack_require__.b);
+// Module
+var ___HTML_LOADER_REPLACEMENT_0___ = getUrl_default()(___HTML_LOADER_IMPORT_0___);
+var score_code = "<main class=\"score-cmp\"> <div class=\"d-flex p-3\"> <div class=\"flex-grow-1\"> <h3 class=\"congrats\">CONGRATS<br/><span id=\"name\"></span></h3> </div> <div> <img src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" class=\"happy\"/> <p class=\"size\"><span id=\"size\"></span> pairs</p> <p class=\"time\"><span id=\"time\"></span>s</p> </div> </div> </main> <" + "script>(new ScoreComponent).init()<" + "/script>";
+// Exports
+/* harmony default export */ const score = (score_code);
 ;// CONCATENATED MODULE: ./src/app/scripts/score.js
 // TODO #import-html: use ES default imports to import game.html as template
 
@@ -13448,7 +13564,7 @@ function ScoreComponent() {
   // TODO #extends: call super(template)
   var params = parseUrl();
   // TODO #import-html: assign template to this.template
-  this.template = game;
+  this.template = score;
   this.name = params.name;
   this.size = parseInt(params.size);
   this.time = parseInt(params.time);
