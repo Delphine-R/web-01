@@ -13293,23 +13293,15 @@ class GameComponent extends Component{
     this._matchedPairs = 0;
   }
 
-  init(){
-    // fetch the cards configuration from the server
-    this.fetchConfig((config) => {
-      // TODO #arrow-function: use arrow function instead.
-        this._config = config;
-        this._boardElement = document.querySelector(".cards");
+  async init() {
+    const config = await this.fetchConfig();
 
-      // create cards out of the config
-      this._cards = [];
-      // TODO #functional-programming: use Array.map() instead.
-      for (let i in this._config.ids) {
-        this._cards = this._config.ids.map(id => new CardComponent(id));
-      }
+    this._config = config;
+    this._boardElement = document.querySelector(".cards");
 
-      // TODO #functional-programming: use Array.forEach() instead.
-      // TODO #let-const: replace var with let.
-      this._cards.forEach(card => {
+    this._cards = this._config.ids.map(id => new CardComponent(id));
+
+    this._cards.forEach(card => {
         this._boardElement.appendChild(card.getElement());
         card.getElement().addEventListener(
             "click",
@@ -13324,12 +13316,10 @@ class GameComponent extends Component{
             }
         );
     });
-    
+
     this.start();
-    
-      }
-    );
-    }
+}
+
 
   start() {
     this._startTime = Date.now();
@@ -13401,33 +13391,11 @@ class GameComponent extends Component{
     }
   }
   
-  fetchConfig(cb) {
-    let xhr =
-      typeof XMLHttpRequest != "undefined"
-        ? new XMLHttpRequest()
-        : new ActiveXObject("Microsoft.XMLHTTP");
-  
-    // TODO #template-literals:  use template literals (backquotes)
-    xhr.open("get", `${environment.api.host}/board?size=${this._size}`, true);
-
-  
-    // TODO #arrow-function: use arrow function instead.
-    xhr.onreadystatechange = () => {
-      let status;
-      let data;
-      // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
-      if (xhr.readyState == 4) {
-        // `DONE`
-        status = xhr.status;
-        if (status == 200) {
-          data = JSON.parse(xhr.responseText);
-          cb(data);
-        } else {
-          throw new Error(status);
-        }
-      }
-    };
-    xhr.send();
+  async fetchConfig() {
+    const response = await fetch(
+      `${environment.api.host}/board?size=${this._size}`
+    );
+    return response.json();
   }
   
   goToScore() {
