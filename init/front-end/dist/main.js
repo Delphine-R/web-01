@@ -13190,7 +13190,7 @@ class WelcomeComponent extends Component {
     // TODO #spa: replace with './#game'
     var gamePage = "./#game";
     // TODO #template-literals:  use template literals (backquotes)
-    window.location = gamePage + "?name=" + name + "&size=" + size;
+    window.location = `${gamePage}?name=${name}&size=${size}`;
   }
 
   get _flipped() {
@@ -13216,16 +13216,14 @@ var game_code = " <main class=\"game-cmp\"> <div class=\"cards\"></div> </main> 
 ;// CONCATENATED MODULE: ./src/app/scripts/utils.js
 // TODO #export-functions: export function parseUrl
 function parseUrl(url = window.location.href) {
-  var query = url.split("?")[1] || "";
-  var result = {};
-
-  var parts = query.split("&");
-  // TODO #functional-programming: Use Array.map() & Array.reduce()
-  for (var i in parts) {
-    var item = parts[i];
-    var kv = item.split("=");
-    result[kv[0]] = kv[1];
-  }
+  const query = url.split("?")[1] || "";
+  
+  const result = query.split("&")
+      .map(item => item.split("="))
+      .reduce((acc, [key, value]) => {
+          acc[key] = value;
+          return acc;
+      }, {});
 
   return result;
 }
@@ -13306,31 +13304,29 @@ class GameComponent extends Component{
       this._cards = [];
       // TODO #functional-programming: use Array.map() instead.
       for (let i in this._config.ids) {
-        this._cards[i] = new CardComponent(this._config.ids[i]);
+        this._cards = this._config.ids.map(id => new CardComponent(id));
       }
 
       // TODO #functional-programming: use Array.forEach() instead.
       // TODO #let-const: replace var with let.
-      for (let i in this._cards) {
-        let card = this._cards[i];
-
-        // TODO #let-const: extract function _appendCard (ie: copy its body here and remove the function)
+      this._cards.forEach(card => {
         this._boardElement.appendChild(card.getElement());
-          card.getElement().addEventListener(
+        card.getElement().addEventListener(
             "click",
-            function () {
-              card.getElement().addEventListener(
-                "click",
-                function () {
-                  this._flipCard(card);
-                }.bind(this)
-              );
-              this._flipCard(card);
-            }.bind(this)
-          );
-      }
-
-        this.start();
+            () => {
+                card.getElement().addEventListener(
+                    "click",
+                    () => {
+                        this._flipCard(card);
+                    }
+                );
+                this._flipCard(card);
+            }
+        );
+    });
+    
+    this.start();
+    
       }
     );
     }
@@ -13340,13 +13336,14 @@ class GameComponent extends Component{
     let seconds = 0;
     // TODO #template-literals:  use template literals (backquotes)
     document.querySelector("nav .navbar-title").textContent =
-      "Player: " + this._name + ". Elapsed time: " + seconds++;
+      `Player: ${this._name} Elapsed time: ${seconds++}`;
+
   
     this._timer = setInterval(() => {
       // TODO #arrow-function: use arrow function instead.
         // TODO #template-literals:  use template literals (backquotes)
         document.querySelector("nav .navbar-title").textContent =
-          "Player: " + this._name + ". Elapsed time: " + seconds++;
+        `Player: ${this._name} Elapsed time: ${seconds++}`;
       },
       1000
     );
@@ -13411,7 +13408,8 @@ class GameComponent extends Component{
         : new ActiveXObject("Microsoft.XMLHTTP");
   
     // TODO #template-literals:  use template literals (backquotes)
-    xhr.open("get", environment.api.host + "/board?size=" + this._size, true);
+    xhr.open("get", `${environment.api.host}/board?size=${this._size}`, true);
+
   
     // TODO #arrow-function: use arrow function instead.
     xhr.onreadystatechange = () => {
@@ -13444,13 +13442,8 @@ class GameComponent extends Component{
         let scorePage = "./#score";
         // TODO #template-literals:  use template literals (backquotes)
         window.location =
-          scorePage +
-          "?name=" +
-          this._name +
-          "&size=" +
-          this._size +
-          "&time=" +
-          timeElapsedInSeconds;
+        `${scorePage}?name=${this._name}&size=${this._size}&time=${timeElapsedInSeconds}`;
+
       },
       750
     );
