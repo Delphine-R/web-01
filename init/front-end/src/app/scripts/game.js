@@ -85,13 +85,14 @@ export class GameComponent extends Component{
     let seconds = 0;
     // TODO #template-literals:  use template literals (backquotes)
     document.querySelector("nav .navbar-title").textContent =
-      "Player: " + this._name + ". Elapsed time: " + seconds++;
+      `Player: ${this._name} Elapsed time: ${seconds++}`;
+
   
     this._timer = setInterval(() => {
       // TODO #arrow-function: use arrow function instead.
         // TODO #template-literals:  use template literals (backquotes)
         document.querySelector("nav .navbar-title").textContent =
-          "Player: " + this._name + ". Elapsed time: " + seconds++;
+        `Player: ${this._name} Elapsed time: ${seconds++}`;
       },
       1000
     );
@@ -156,7 +157,8 @@ export class GameComponent extends Component{
         : new ActiveXObject("Microsoft.XMLHTTP");
   
     // TODO #template-literals:  use template literals (backquotes)
-    xhr.open("get", environment.api.host + "/board?size=" + this._size, true);
+    xhr.open("get", `${environment.api.host}/board?size=${this._size}`, true);
+
   
     // TODO #arrow-function: use arrow function instead.
     xhr.onreadystatechange = () => {
@@ -189,13 +191,8 @@ export class GameComponent extends Component{
         let scorePage = "./#score";
         // TODO #template-literals:  use template literals (backquotes)
         window.location =
-          scorePage +
-          "?name=" +
-          this._name +
-          "&size=" +
-          this._size +
-          "&time=" +
-          timeElapsedInSeconds;
+        `${scorePage}?name=${this._name}&size=${this._size}&time=${timeElapsedInSeconds}`;
+
       },
       750
     );

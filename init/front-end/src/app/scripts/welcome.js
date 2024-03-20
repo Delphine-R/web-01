@@ -39,7 +39,7 @@ export class WelcomeComponent extends Component {
     // TODO #spa: replace with './#game'
     var gamePage = "./#game";
     // TODO #template-literals:  use template literals (backquotes)
-    window.location = gamePage + "?name=" + name + "&size=" + size;
+    window.location = `${gamePage}?name=${name}&size=${size}`;
   }
 
   get _flipped() {
